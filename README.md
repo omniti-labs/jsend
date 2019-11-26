@@ -20,7 +20,7 @@ When setting up a JSON API, you'll have all kinds of different types of calls an
 <table>
 <tr><th>Type</td><th>Description</th><th>Required Keys</th><th>Optional Keys</td></tr>
 <tr><td>success</td><td>All went well, and (usually) some data was returned.</td><td>status, data</td><td></td></tr>
-<tr><td>fail</td><td>There was a problem with the data submitted, or some pre-condition of the API call wasn't satisfied</td><td>status, data</td><td></td></tr>
+<tr><td>failure</td><td>There was a problem with the data submitted, or some pre-condition of the API call wasn't satisfied</td><td>status, data</td><td></td></tr>
 <tr><td>error</td><td>An error occurred in processing the request, i.e. an exception was thrown</td><td>status, message</td><td>code, data</td></tr>
 </table>
 
@@ -59,18 +59,18 @@ Required keys:
 * status: Should always be set to "success".
 * data: Acts as the wrapper for any data returned by the API call. If the call returns no data (as in the last example), data should be set to null.
 
-### Fail ### 
+### failure ### 
 When an API call is rejected due to invalid data or call conditions, the JSend object's data key contains an object explaining what went wrong, typically a hash of validation errors. For example:
 #### POST /posts.json (with data body: "Trying to creating a blog post"): ####
 ```
 {
-    "status" : "fail",
+    "status" : "failure",
     "data" : { "title" : "A title is required" }
 }
 ```
 Required keys:
 
-* status: Should always be set to "fail".
+* status: Should always be set to "failure".
 * data: Again, provides the wrapper for the details of why the request failed. If the reasons for failure correspond to POST values, the response object's keys SHOULD correspond to those POST values.
 
 ### Error ### 
