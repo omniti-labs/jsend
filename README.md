@@ -20,7 +20,7 @@ When setting up a JSON API, you'll have all kinds of different types of calls an
 <table>
 <tr><th>Type</td><th>Description</th><th>Required Keys</th><th>Optional Keys</td></tr>
 <tr><td>success</td><td>All went well, and (usually) some data was returned.</td><td>status, data</td><td></td></tr>
-<tr><td>fail</td><td>There was a problem with the data submitted, or some pre-condition of the API call wasn't satisfied</td><td>status, data</td><td></td></tr>
+<tr><td>fail</td><td>There was a problem with the data submitted, or some pre-condition of the API call wasn't satisfied</td><td>status, data</td><td>message</td></tr>
 <tr><td>error</td><td>An error occurred in processing the request, i.e. an exception was thrown</td><td>status, message</td><td>code, data</td></tr>
 </table>
 
