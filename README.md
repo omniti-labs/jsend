@@ -7,10 +7,10 @@
 
 ## So how does it work? 
 A basic JSend-compliant response is as simple as this:
-```
+```json
 {
-    status : "success",
-    data : {
+    "status" : "success",
+    "data" : {
         "post" : { "id" : 1, "title" : "A blog post", "body" : "Some useful content" }
      }
 }
@@ -29,10 +29,10 @@ When setting up a JSON API, you'll have all kinds of different types of calls an
 ### Success ### 
 When an API call is successful, the JSend object is used as a simple envelope for the results, using the data key, as in the following:
 #### GET /posts.json: ####
-```
+```json
 {
-    status : "success",
-    data : {
+    "status" : "success",
+    "data" : {
         "posts" : [
             { "id" : 1, "title" : "A blog post", "body" : "Some useful content" },
             { "id" : 2, "title" : "Another blog post", "body" : "More content" },
@@ -41,17 +41,17 @@ When an API call is successful, the JSend object is used as a simple envelope fo
 }
 ```
 #### GET /posts/2.json: ####
-```
+```json
 {
-    status : "success",
-    data : { "post" : { "id" : 2, "title" : "Another blog post", "body" : "More content" }}
+    "status" : "success",
+    "data" : { "post" : { "id" : 2, "title" : "Another blog post", "body" : "More content" }}
 }
 ```
 #### DELETE /posts/2.json: ####
-```
+```json
 {
-    status : "success",
-    data : null
+    "status" : "success",
+    "data" : null
 }
 ```
 Required keys:
@@ -62,7 +62,7 @@ Required keys:
 ### Fail ### 
 When an API call is rejected due to invalid data or call conditions, the JSend object's data key contains an object explaining what went wrong, typically a hash of validation errors. For example:
 #### POST /posts.json (with data body: "Trying to creating a blog post"): ####
-```
+```json
 {
     "status" : "fail",
     "data" : { "title" : "A title is required" }
@@ -76,7 +76,7 @@ Required keys:
 ### Error ### 
 When an API call fails due to an error on the server. For example:
 #### GET /posts.json: ####
-```
+```json
 {
     "status" : "error",
     "message" : "Unable to communicate with database"
